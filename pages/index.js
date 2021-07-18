@@ -23,6 +23,28 @@ function ProfileSidebar(propriedades) {
   )
 }
 
+function ProfileRelationsBox (propriedades) {
+  return (
+    <ProfileRelationsBoxWrapper>
+      <h2 className="smallTitle">
+        {propriedades.title} ({propriedades.itens.length})
+      </h2>
+      <ul>
+        {/* {seguidores.map((itemAtual) => {
+          return (
+            <li key={itemAtual}>
+              <a href={`/users/${itemAtual}`}>
+                <img src={`https://github.com/${itemAtual}.png`} />
+                <span>{itemAtual}</span>
+              </a>
+            </li>
+          )
+        })} */}
+      </ul>
+    </ProfileRelationsBoxWrapper>
+  )
+}
+
 export default function Home() {
   const githubUser = 'katharinefernandes';
   const [comunidades, setComunidades] = React.useState([{
@@ -41,6 +63,23 @@ export default function Home() {
     'omariosouto',
     'juunegreiros'
   ]
+
+  const [seguidores, setSeguidores] = React.useState([]);
+  // 0 - Pegar o array de dados do github
+  React.useEffect(function() {
+  const seguidores = fetch('https://api.github.com/users/katharinefernandes/followers')
+    .then(function (respostasDoServidor) {
+      return respostasDoServidor.json()
+    })
+    .then(function (respostaCompleta) {
+        setSeguidores(respostaCompleta)
+    })
+  }, [])
+
+  console.log('seguidores antes do return', seguidores);
+
+  // 1 - Criar um box que vai ter um map, baseado nos itens do array
+  // que pegamos do GitHub
   
   return (
   < >
@@ -93,15 +132,12 @@ export default function Home() {
 
             <button>
               Criar comunidade
-            </button>
-            
+            </button>           
           </form>
-          
         </Box>
-
       </div>
       <div className="profileRelationsArea" style= {{ gridArea: 'profileRelationsArea'}}>
-
+        <ProfileRelationsBox title="Seguidores" itens={seguidores} />
         <ProfileRelationsBoxWrapper>
           <h2 className="smallTitle">
             Pessoas da comunidade ({pessoasFavoritas.length})
