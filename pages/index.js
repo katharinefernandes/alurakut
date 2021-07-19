@@ -1,11 +1,12 @@
 import React from 'react';
+import nookies from 'nookies';
+import jwt from 'jsonwebtoken';
 import MainGrid from '../src/components/MainGrid'
 import Box from '../src/components/Box'
 import { AlurakutMenu, AlurakutProfileSidebarMenuDefault, OrkutNostalgicIconSet } from '../src/lib/AlurakutCommons';
 import { ProfileRelationsBoxWrapper } from '../src/components/ProfileRelations';
 
 function ProfileSidebar(propriedades) {
-  console.log(propriedades);
   return (
     <Box as="aside">
       <img src={`https://github.com/${propriedades.githubUser}.png`} style={{ borderRadius: '8px' }}/>
@@ -45,8 +46,8 @@ function ProfileRelationsBox (propriedades) {
   )
 }
 
-export default function Home() {
-  const usuarioAleatorio = 'katharinefernandes';
+export default function Home(props) {
+  const usuarioAleatorio = props.githubUser;
   const [comunidades, setComunidades] = React.useState([]);
   // const comunidades = comunidades[0];
   // const alteradorDeComunidades/setComunidades = comunidades[1];
@@ -64,12 +65,12 @@ export default function Home() {
   // 0 - Pegar o array de dados do github
   React.useEffect(function() {
   // GET
-  const seguidores = fetch('https://api.github.com/users/katharinefernandes/followers')
+  fetch('https://api.github.com/users/katharinefernandes/followers')
     .then(function (respostasDoServidor) {
-      return respostasDoServidor.json()
+      return respostasDoServidor.json();
     })
     .then(function (respostaCompleta) {
-        setSeguidores(respostaCompleta)
+        setSeguidores(respostaCompleta);
     })
 
     // API GraphQL
@@ -216,4 +217,34 @@ export default function Home() {
   </>
 
   )
+}
+
+
+export async function getServerSideProps(context) {
+  const cookies = nookies.get(context);
+  const token = cookies.USER_TOKEN;
+  const decodedToken = jwt.decode(token);
+  const githubUser = decodedToken?.githubUser;
+
+  if(!githubUser) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    };
+  }
+
+//   const { isAuthenticated } = await fetch('https://alurakut.vercel.app/api/auth', {
+//     headers: {
+//       Authorization: token,
+//     },
+//   }
+// ).then((resposta) => resposta.json())
+  
+  return {
+    props: {
+      githubUser,
+    },
+  };
 }
