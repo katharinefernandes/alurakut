@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 const Box = styled.div`
-  background: #ffffff;
+  background: #0D1117;
   border-radius: 8px;
   padding: 16px;
   
@@ -9,17 +9,19 @@ const Box = styled.div`
   margin-bottom: 10px;
   .boxLink {
     font-size: 14px;
-    color: #2e7bb4;
+    color: #949494;
     text-decoration: none;
     font-weight: 800;
   }
   .title {
     font-size: 32px;
+    color: #949494;
     font-weight: 400;
     margin-bottom: 20px;
   }
   .subTitle {
     font-size: 18px;
+    color: #949494;
     font-weight: 400;
     margin-bottom: 20px;
   }
@@ -27,7 +29,7 @@ const Box = styled.div`
     margin-bottom: 20px;
     font-size: 16px;
     font-weight: 700;
-    color: #333333;
+    color: #949494;
     margin-bottom: 20px;
   }
   hr {
@@ -52,9 +54,9 @@ const Box = styled.div`
   button {
     border: 0;
     padding: 8px 12px;
-    color: #ffffff;
+    color: #010409;
     border-radius: 10000px;
-    background-color: #6f92bb;
+    background-color: #52C171;
   }
 `;
 

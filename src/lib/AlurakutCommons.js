@@ -5,7 +5,6 @@ import NextLink from 'next/link';
 const BASE_URL = 'http://alurakut.vercel.app/';
 const v = '1';
 
-
 function Link({ href, children, ...props }) {
   return (
     <NextLink href={href} passHref>
@@ -24,7 +23,7 @@ export function AlurakutMenu({ githubUser }) {
   return (
     <AlurakutMenu.Wrapper isMenuOpen={isMenuOpen}>
       <div className="container">
-        <AlurakutMenu.Logo src={`${BASE_URL}/logo.svg`} />
+        <AlurakutMenu.Logo src={`https://raw.githubusercontent.com/katharinefernandes/alurakut/90548815d567f45d1274dd5fcbd4f3a9a4a733e1/img/logo%20(2).svg`} />
 
         <nav style={{ flex: 1 }}>
           {[{ name: 'Inicio', slug: '/'}, {name: 'Amigos', slug: '/amigos'}, {name: 'Comunidades', slug: '/comunidades'}].map((menuItem) => (
@@ -54,10 +53,10 @@ export function AlurakutMenu({ githubUser }) {
 }
 AlurakutMenu.Wrapper = styled.header`
   width: 100%;
-  background-color: #308BC5;
+  background-color: #0D1117;
 
   .alurakutMenuProfileSidebar {
-    background: white;
+    background: #0D1117;
     position: fixed;
     z-index: 100;
     padding: 46px;
@@ -81,7 +80,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     .boxLink {
       font-size: 18px;
-      color: #2E7BB4;
+      color: #52C171;
       -webkit-text-decoration: none;
       text-decoration: none;
       font-weight: 800;
@@ -91,12 +90,12 @@ AlurakutMenu.Wrapper = styled.header`
       margin-top: 12px;
       margin-bottom: 8px;
       border-color: transparent;
-      border-bottom-color: #ECF2FA;
+      border-bottom-color: #52C171;
     }
   }
 
   .container {
-    background-color: #308BC5;
+    background-color: #0D1117;
     padding: 7px 16px;
     max-width: 1110px;
     margin: auto;
@@ -131,7 +130,7 @@ AlurakutMenu.Wrapper = styled.header`
         text-decoration: none;
         &:after {
           content: " ";
-          background-color: #5292C1;
+          background-color: #52C171;
           display: block;
           position: absolute;
           width: 1px;
@@ -145,7 +144,7 @@ AlurakutMenu.Wrapper = styled.header`
     }
     input {
       color: #ffffff;
-      background: #5579A1;
+      background: #010409;
       padding: 10px 42px;
       border: 0;
       background-image: url(${`${BASE_URL}/icons/search.svg`});
@@ -227,7 +226,7 @@ export function AlurakutProfileSidebarMenuDefault() {
 AlurakutProfileSidebarMenuDefault.Wrapper = styled.div`
   a {
     font-size: 12px;
-    color: #2E7BB4;
+    color: #52C171;
     margin-bottom: 16px;
     display: flex;
     align-items: center;
@@ -325,23 +324,24 @@ OrkutNostalgicIconSet.List = styled.ul`
 // ================================================================================================================
 const AlurakutLoginScreen = css`
   :root {
-    --backgroundPrimary: #D9E6F6;
-    --backgroundSecondary: #F1F9FE;
+    --backgroundPrimary: #01040;
+    --backgroundSecondary: #FFFFFF;
     --backgroundTertiary: #FFFFFF;
-    --backgroundQuarternary: #BBCDE8;
-    --colorPrimary: #2E7BB4;
-    --colorSecondary: #388BB0;
-    --colorTertiary: #2F4A71;
-    --colorQuarternary: #D81D99;
-    --textPrimaryColor: #333333;
-    --textSecondaryColor: #FFFFFF;
-    --textTertiaryColor: #5A5A5A;
-    --textQuarternaryColor: #C5C6CA;
+    --backgroundQuarternary: #0D1117;  
+    --colorPrimary: #52C171;
+    --colorSecondary: #949494;
+    --colorTertiary: #949494;
+    --colorQuarternary: #52C171;
+    --textPrimaryColor: #FFFFFF;
+    --textSecondaryColor: #0D1117;
+    --textTertiaryColor: #FFFFFF;
+    --textQuarternaryColor: #FFFFFF;
     --commonRadius: 8px;
   }
 
 
   .loginScreen {
+    background-color: #010409;
     padding: 16px;
     max-width: 1110px;
     display: grid;
@@ -361,7 +361,7 @@ const AlurakutLoginScreen = css`
     }
     .logoArea {
       grid-area: logoArea;
-      background-color: var(--backgroundTertiary);
+      background-color: #0D1117;
       border-radius: var(--commonRadius);
       padding: var(--gutter);
       text-align: center;
@@ -377,6 +377,7 @@ const AlurakutLoginScreen = css`
       p {
         font-size: 12px;
         line-height: 1.2;
+        color: #949494;
         &:not(:last-child) {
           margin-bottom: 12px;
         }
@@ -403,7 +404,7 @@ const AlurakutLoginScreen = css`
         padding: var(--gutter);
         padding-left: 50px;
         padding-right: 50px;
-        background-color: var(--backgroundSecondary);
+        background-color: #0D1117;
         border-radius: var(--commonRadius);
         flex: 1;
         &:not(:last-child) {
@@ -417,6 +418,7 @@ const AlurakutLoginScreen = css`
         }
         p {
           font-size: 14px;
+          color: #949494;
         }
         a {
           text-decoration: none;
@@ -451,6 +453,7 @@ const AlurakutLoginScreen = css`
       p {
         font-size: 12px;
         text-align: center;
+        color: #949494;
         a {
           text-decoration: none;
           color: var(--colorPrimary);
